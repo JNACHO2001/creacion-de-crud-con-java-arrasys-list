@@ -42,17 +42,19 @@ public class Pruebas {
 
                     case 2 -> {
                         System.out.println("\n Lista de productos:");
+                        System.out.println("--------------------------------");
                         if (productos.isEmpty()) {
                             System.out.println("No hay productos registrados.");
 
                         } else {
                             int index = 0;
-                            System.out.println(" # " + " producto");
+                            System.out.println("# " + " producto");
+                            System.out.println("--------------------------------");
                             for (String producto : productos) {
 
                                 System.out.println(index + "    " + producto);
                                 index++;
-
+                               System.out.println("--------------------------------");
                             }
                         }
 
