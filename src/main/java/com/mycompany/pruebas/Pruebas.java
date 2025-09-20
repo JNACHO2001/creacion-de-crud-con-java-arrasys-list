@@ -37,11 +37,11 @@ public class Pruebas {
                         System.out.print("Ingrese el nombre del producto: ");
                         String nuevoProducto = sc.nextLine();
                         productos.add(nuevoProducto);
-                        System.out.println("Producto agregado con éxito ✅");
+                        System.out.println("Producto agregado con éxito ");
                     }
 
                     case 2 -> {
-                        System.out.println("\n📦 Lista de productos:");
+                        System.out.println("\n Lista de productos:");
                         if (productos.isEmpty()) {
                             System.out.println("No hay productos registrados.");
 
