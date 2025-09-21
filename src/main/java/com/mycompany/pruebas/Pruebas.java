@@ -12,20 +12,15 @@ import java.util.Scanner;
  * @author jogo
  */
 public class Pruebas {
+    public static  Scanner sc = new Scanner(System.in);
+       public static   ArrayList<String> productos = new ArrayList<>();
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        ArrayList<String> productos = new ArrayList<>();
+
         int opcion = 0;
 
         do {
-            System.out.println("\n=== MENÚ CRUD ===");
-            System.out.println("1. Crear producto");
-            System.out.println("2. Listar productos");
-            System.out.println("3. Editar producto");
-            System.out.println("4. Eliminar producto");
-            System.out.println("5. Salir");
-            System.out.print("Elige una opción: ");
+            menu();
 
             try {
                 opcion = sc.nextInt();
@@ -33,72 +28,19 @@ public class Pruebas {
 
                 switch (opcion) {
 
-                    case 1 -> {
-                        System.out.print("Ingrese el nombre del producto: ");
-                        String nuevoProducto = sc.nextLine();
-                        productos.add(nuevoProducto);
-                        System.out.println("Producto agregado con éxito ");
-                    }
+                    case 1 ->
+                        crear();
 
-                    case 2 -> {
-                        System.out.println("\n Lista de productos:");
-                        System.out.println("--------------------------------");
-                        if (productos.isEmpty()) {
-                            System.out.println("No hay productos registrados.");
-
-                        } else {
-                            int index = 0;
-                            System.out.println("# " + " producto");
-                            System.out.println("--------------------------------");
-                            for (String producto : productos) {
-
-                                System.out.println(index + "    " + producto);
-                                index++;
-                               System.out.println("--------------------------------");
-                            }
-                        }
-
-                    }
+                    case 2 ->
+                        listar();
 
                     case 3 -> {
-                         if(productos.isEmpty()){
-                            System.out.println("no hay productos para editar");
-                            break;
-                        }
-                        System.out.print("Ingresa el índice del producto que quieres editar: ");
-                        int index = sc.nextInt();
-                        sc.nextLine();
-
-                        if (index >= 0 && index < productos.size()) {
-                            System.out.print("Escribe el nuevo nombre del producto: ");
-                            String nuevoNombreDeProducto = sc.nextLine();
-                            productos.set(index, nuevoNombreDeProducto);
-                            System.out.println(" Producto editado con éxito.");
-
-                        } else {
-                            System.out.println(" Índice inválido.");
-
-                        }
+                        editar();
 
                     }
 
                     case 4 -> {
-                        
-                        if(productos.isEmpty()){
-                            System.out.println("no hay productos para eliminar");
-                            break;
-                        }
-                        System.out.print("Ingresa el índice del producto que quieres eliminar: ");
-                        int index = sc.nextInt();
-
-                        if (index >= 0 && index < productos.size()) {
-                            String eliminado = productos.remove(index);
-                            System.out.println(" Producto eliminado con éxito." + eliminado);
-
-                        } else {
-                            System.out.println("Índice inválido.");
-
-                        }
+                        eliminar();
 
                     }
 
@@ -118,15 +60,96 @@ public class Pruebas {
             } catch (InputMismatchException e) {
                 System.out.println(" Error: Debes ingresar un número.");
                 sc.nextLine();
-                
-            }
-            catch(Exception e ){
-                 System.out.println(" Ocurrió un error inesperado: " + e.getMessage());
-                
+
+            } catch (Exception e) {
+                System.out.println(" Ocurrió un error inesperado: " + e.getMessage());
+
             }
 
         } while (opcion != 5);
 
+    }
+    
+    
+    
+    
+    
+    
+    public static void menu() {
+        System.out.println("\n=== MENÚ CRUD ===");
+        System.out.println("1. Crear producto");
+        System.out.println("2. Listar productos");
+        System.out.println("3. Editar producto");
+        System.out.println("4. Eliminar producto");
+        System.out.println("5. Salir");
+        System.out.print("Elige una opción: ");
+
+    }
+
+    public static void crear() {
+        System.out.print("Ingrese el nombre del producto: ");
+        String nuevoProducto = sc.nextLine();
+        productos.add(nuevoProducto);
+        System.out.println("Producto agregado con éxito ");
+    }
+
+    public static void listar() {
+        System.out.println("\n Lista de productos:");
+        System.out.println("--------------------------------");
+        if (productos.isEmpty()) {
+            System.out.println("No hay productos registrados.");
+
+        } else {
+            int index = 0;
+            System.out.println("# " + " producto");
+            System.out.println("--------------------------------");
+            for (String producto : productos) {
+
+                System.out.println(index + "    " + producto);
+                index++;
+                System.out.println("--------------------------------");
+            }
+        }
+    }
+    
+    public static void editar() {
+        if (productos.isEmpty()) {
+            System.out.println("no hay productos para editar");
+            return;
+        }
+        System.out.print("Ingresa el índice del producto que quieres editar: ");
+        int index = sc.nextInt();
+        sc.nextLine();
+
+        if (index >= 0 && index < productos.size()) {
+            System.out.print("Escribe el nuevo nombre del producto: ");
+            String nuevoNombreDeProducto = sc.nextLine();
+            productos.set(index, nuevoNombreDeProducto);
+            System.out.println(" Producto editado con éxito.");
+
+        } else {
+            System.out.println(" Índice inválido.");
+
+        }
+    }
+    
+    public static void eliminar() {
+
+        if (productos.isEmpty()) {
+            System.out.println("no hay productos para eliminar");
+            return;
+        }
+        System.out.print("Ingresa el índice del producto que quieres eliminar: ");
+        int index = sc.nextInt();
+
+        if (index >= 0 && index < productos.size()) {
+            String eliminado = productos.remove(index);
+            System.out.println(" Producto eliminado con éxito." + eliminado);
+
+        } else {
+            System.out.println("Índice inválido.");
+
+        }
     }
 
 }
