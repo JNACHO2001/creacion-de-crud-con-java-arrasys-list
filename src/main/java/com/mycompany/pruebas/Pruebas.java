@@ -18,7 +18,8 @@ public class Pruebas {
     public static void main(String[] args) {
 
         int opcion = 0;
-
+        
+//Con do while al menos se ejecuta una vez el codigo
         do {
             menu();
 
@@ -56,10 +57,12 @@ public class Pruebas {
                     }
 
                 }
-
+               // este es para prevernir que el usuario ingrese algo que no se ha numeros 
             } catch (InputMismatchException e) {
                 System.out.println(" Error: Debes ingresar un número.");
                 sc.nextLine();
+                
+                // este es para atrapar cualquier problema y no romper el codigo 
 
             } catch (Exception e) {
                 System.out.println(" Ocurrió un error inesperado: " + e.getMessage());
@@ -73,7 +76,9 @@ public class Pruebas {
     
     
     
-    
+    /*
+    metodos para CRUD con arrays dinamicos 
+    */
     
     public static void menu() {
         System.out.println("\n=== MENÚ CRUD ===");
