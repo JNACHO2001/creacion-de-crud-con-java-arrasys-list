@@ -60,7 +60,7 @@ public class Pruebas {
                // este es para prevernir que el usuario ingrese algo que no se ha numeros 
             } catch (InputMismatchException e) {
                 System.out.println(" Error: Debes ingresar un número.");
-                sc.nextLine();
+                sc.nextLine();   
                 
                 // este es para atrapar cualquier problema y no romper el codigo 
 
@@ -94,8 +94,15 @@ public class Pruebas {
     public static void crear() {
         System.out.print("Ingrese el nombre del producto: ");
         String nuevoProducto = sc.nextLine();
-        productos.add(nuevoProducto);
+        if (!nuevoProducto.isEmpty()) {
+             productos.add(nuevoProducto);
         System.out.println("Producto agregado con éxito ");
+            
+        } else {
+             System.out.println("el campo no puede estar vacio  ");
+            
+        }
+       
     }
 
     public static void listar() {
